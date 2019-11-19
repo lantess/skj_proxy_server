@@ -23,9 +23,10 @@ public class Main {
     public Main(int listeningPort) throws IOException {
         connectionRequestListener = new ServerSocket(listeningPort);
         isAlive = true;
+        int client_nr = 0;
         while(isAlive){
             Socket newClient = connectionRequestListener.accept();
-            connections.add(new ProxyConnector(newClient));
+            connections.add(new ProxyConnector(newClient, client_nr++));
         }
     }
 }

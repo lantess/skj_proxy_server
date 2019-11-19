@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5f5c7e91-fb9b-4469-a83e-6ca3bcd93eaa" name="Default Changelist" comment="" />
+    <list default="true" id="508dceb5-7683-4915-8f27-0308c5c16741" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/project-template.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/s19215/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/s19215/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/s19215/ProxyConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/s19215/ProxyConnector.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +24,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectId" id="1Tk6teCh7baCVyd9269LZaR8fMZ" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1TqM6p5Gz7qjVXKG7bPIXzpRl1b" />
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -29,12 +41,15 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.s19215.Main" />
-      <module name="Proxy_server" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
+      <module name="skj" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.s19215.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -50,12 +65,23 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5f5c7e91-fb9b-4469-a83e-6ca3bcd93eaa" name="Default Changelist" comment="" />
-      <created>1573991962223</created>
+      <changelist id="508dceb5-7683-4915-8f27-0308c5c16741" name="Default Changelist" comment="" />
+      <created>1574182999373</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1573991962223</updated>
+      <updated>1574182999373</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

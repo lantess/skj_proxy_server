@@ -14,9 +14,11 @@ public class ProxyConnector extends Thread{
     private BufferedReader sv_in;
     private PrintWriter sv_out;
     private boolean isAlive;
-    public ProxyConnector(Socket client) throws IOException {
+    private int cl_nr;
+    public ProxyConnector(Socket client, int cl_nr) throws IOException {
         isAlive = true;
         this.client=client;
+        this.cl_nr = cl_nr;
         cl_in = new BufferedReader(new InputStreamReader(client.getInputStream()));
         cl_out = new PrintWriter(client.getOutputStream());
         this.start();
@@ -26,10 +28,23 @@ public class ProxyConnector extends Thread{
     public void run(){
         try{
             String inputLine = cl_in.readLine();
-            cl_in.readLine();cl_in.readLine();cl_in.readLine();
+            cl_in.readLine();cl_in.readLine();cl_in.readLine();cl_in.readLine(); //to skip the rest of lines
             server = new Socket(inputLine.split(" ")[1].split(":")[0],
-                    Integer.parseInt(inputLine.split(" ")[1].split(":")[1]));
+            Integer.parseInt(inputLine.split(" ")[1].split(":")[1]));
             System.out.println(server.getInetAddress());
+            cl_out.write("HTTP/1.0 200 Connection established\r\nProxy-Agent: ProxyServer/1.0\r\n\r\n");
+            cl_out.flush();
+            while(isAlive){
+                while((inputLine = cl_in.readLine()) != null){
+                    System.out.println(inputLine);
+                    sv_out.write(inputLine);
+                }
+                while((inputLine = sv_in.readLine()) != null){
+                    cl_out.write(inputLine);
+                }
+                sv_out.flush();
+                cl_out.flush();
+            }
         } catch (IOException e) {
             isAlive = false;
         }
