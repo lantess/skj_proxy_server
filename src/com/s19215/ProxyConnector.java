@@ -39,7 +39,7 @@ public class ProxyConnector extends Thread{
         }
     }
     private void makeNewConnection(HTTPCommandParser command) throws IOException{
-        Log.connectionLog("Nawiązano połączenie z "+command.getUrl());
+        Log.connectionLog("Nawiązano połączenie z "+command.getUrl()+" przez "+client.getInetAddress().getHostAddress());
         server = new Socket(command.getUrl(),
                                     command.getPort());
         server.setSoTimeout(socketTimeout);
@@ -58,7 +58,7 @@ public class ProxyConnector extends Thread{
 
         }
         closeResources();
-        Log.connectionLog("Zakończono połączenie z "+command.getUrl());
+        Log.connectionLog("Zakończono połączenie z "+command.getUrl()+" rozpoczęte przez "+client.getInetAddress().getHostAddress());
     }
     private void closeResources() throws IOException{
         if(client != null)
