@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="508dceb5-7683-4915-8f27-0308c5c16741" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/project-template.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/s19215/HTTPCommandParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/s19215/HttpMessages.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/s19215/IOListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/s19215/LogFiles.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proxy_server/com/s19215/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Proxy_server/com/s19215/ProxyConnector.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/skj/com/s19215/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/skj/com/s19215/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/skj/com/s19215/ProxyConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/skj/com/s19215/ProxyConnector.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/s19215/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/s19215/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/s19215/ProxyConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/s19215/ProxyConnector.java" afterDir="false" />
     </list>
@@ -28,6 +31,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1TqM6p5Gz7qjVXKG7bPIXzpRl1b" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -78,7 +84,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

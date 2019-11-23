@@ -7,46 +7,68 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 public class ProxyConnector extends Thread{
+    private static final int socketTimeout = 10000;
+
     private Socket client,
                     server;
-    private BufferedReader cl_in;
-    private PrintWriter cl_out;
-    private BufferedReader sv_in;
-    private PrintWriter sv_out;
+    private BufferedReader in_client;
+    private PrintWriter out_client;
     private boolean isAlive;
-    private int cl_nr;
-    public ProxyConnector(Socket client, int cl_nr) throws IOException {
+
+    public ProxyConnector(Socket client) throws IOException {
         isAlive = true;
+        client.setSoTimeout(socketTimeout);
         this.client=client;
-        this.cl_nr = cl_nr;
-        cl_in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-        cl_out = new PrintWriter(client.getOutputStream());
-        this.start();
+        in_client = new BufferedReader(new InputStreamReader(client.getInputStream()));
+        out_client = new PrintWriter(client.getOutputStream());
     }
 
     @Override
     public void run(){
         try{
-            String inputLine = cl_in.readLine();
-            cl_in.readLine();cl_in.readLine();cl_in.readLine();cl_in.readLine(); //to skip the rest of lines
-            server = new Socket(inputLine.split(" ")[1].split(":")[0],
-            Integer.parseInt(inputLine.split(" ")[1].split(":")[1]));
-            System.out.println(server.getInetAddress());
-            cl_out.write("HTTP/1.0 200 Connection established\r\nProxy-Agent: ProxyServer/1.0\r\n\r\n");
-            cl_out.flush();
-            while(isAlive){
-                while((inputLine = cl_in.readLine()) != null){
-                    System.out.println(inputLine);
-                    sv_out.write(inputLine);
-                }
-                while((inputLine = sv_in.readLine()) != null){
-                    cl_out.write(inputLine);
-                }
-                sv_out.flush();
-                cl_out.flush();
-            }
+            String inputLine = in_client.readLine();
+            HTTPCommandParser command = new HTTPCommandParser(inputLine);
+            if(!command.isOk())
+                throw new IOException("Nieprawidłowa komenda");
+            if(command.getCommand().equals("CONNECT"))
+                makeNewConnection(command);
+            else
+                System.out.println(command.getCommand());
+
         } catch (IOException e) {
+            System.out.println("Wystąpił problem podczas komunikacji z serwerem:\n\t\t"+e.getMessage());
             isAlive = false;
         }
+    }
+    private void makeNewConnection(HTTPCommandParser command) throws IOException{
+        System.out.println("Nawiązano połączenie z "+command.getUrl());
+        server = new Socket(command.getUrl(),
+                                    command.getPort());
+        server.setSoTimeout(socketTimeout);
+        //skipUnimportantLines();
+        out_client.write(HttpMessages.connectionEstablished);
+        out_client.flush();
+        System.out.println("Rozpoczęcie komunikacji z "+command.getUrl());
+        new Thread(new IOListener(client.getInputStream(),
+                                    server.getOutputStream()))
+                .start();
+        new IOListener(server.getInputStream(),
+                        client.getOutputStream())
+                .run();
+        System.out.println("Zakończenie komunikacji z "+command.getUrl());
+        closeResources();
+    }
+    private void skipUnimportantLines() throws IOException{
+        while(in_client.readLine() != null){}
+    }
+    private void closeResources() throws IOException{
+        if(client != null)
+            client.close();
+        if(server != null)
+            server.close();
+        if(in_client != null)
+            in_client.close();
+        if(out_client != null)
+            out_client.close();
     }
 }

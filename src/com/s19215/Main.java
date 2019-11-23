@@ -16,6 +16,7 @@ public class Main {
             new Main(2137);
         }
         catch(IOException e){
+            System.out.println("Problem z nawiązaniem połączenia");
             e.printStackTrace();
         }
     }
@@ -23,10 +24,15 @@ public class Main {
     public Main(int listeningPort) throws IOException {
         connectionRequestListener = new ServerSocket(listeningPort);
         isAlive = true;
-        int client_nr = 0;
+        listenToConnections();
+    }
+
+    private void listenToConnections() throws IOException{
         while(isAlive){
             Socket newClient = connectionRequestListener.accept();
-            connections.add(new ProxyConnector(newClient, client_nr++));
+            ProxyConnector connection = new ProxyConnector(newClient);
+            connections.add(connection);
+            connection.start();
         }
     }
 }
