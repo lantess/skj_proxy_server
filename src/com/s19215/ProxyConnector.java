@@ -13,10 +13,8 @@ public class ProxyConnector extends Thread{
                     server;
     private BufferedReader in_client;
     private PrintWriter out_client;
-    private boolean isAlive;
 
     public ProxyConnector(Socket client) throws IOException {
-        isAlive = true;
         client.setSoTimeout(socketTimeout);
         this.client=client;
         in_client = new BufferedReader(new InputStreamReader(client.getInputStream()));
@@ -25,41 +23,42 @@ public class ProxyConnector extends Thread{
 
     @Override
     public void run(){
+        HTTPCommandParser command = null;
         try{
             String inputLine = in_client.readLine();
-            HTTPCommandParser command = new HTTPCommandParser(inputLine);
+            command = new HTTPCommandParser(inputLine);
             if(!command.isOk())
-                throw new IOException("Nieprawidłowa komenda");
+                throw new IOException("Nieprawidłowa komenda.");
             if(command.getCommand().equals("CONNECT"))
                 makeNewConnection(command);
             else
-                System.out.println(command.getCommand());
+                Log.errorLog("Nierozpoznane połączenie.");
 
         } catch (IOException e) {
-            System.out.println("Wystąpił problem podczas komunikacji z serwerem:\n\t\t"+e.getMessage());
-            isAlive = false;
+            Log.errorLog("Wystąpił problem podczas komunikacji z <"+command.getUrl()+">:\t"+e.getMessage());
         }
     }
     private void makeNewConnection(HTTPCommandParser command) throws IOException{
-        System.out.println("Nawiązano połączenie z "+command.getUrl());
+        Log.connectionLog("Nawiązano połączenie z "+command.getUrl());
         server = new Socket(command.getUrl(),
                                     command.getPort());
         server.setSoTimeout(socketTimeout);
-        //skipUnimportantLines();
         out_client.write(HttpMessages.connectionEstablished);
         out_client.flush();
-        System.out.println("Rozpoczęcie komunikacji z "+command.getUrl());
-        new Thread(new IOListener(client.getInputStream(),
-                                    server.getOutputStream()))
-                .start();
+        Thread clientToServer = new Thread(new IOListener(client.getInputStream(),
+                                    server.getOutputStream(),
+                                    command.getUrl()));
+
+        clientToServer.start();
         new IOListener(server.getInputStream(),
-                        client.getOutputStream())
+                client.getOutputStream(),
+                command.getUrl())
                 .run();
-        System.out.println("Zakończenie komunikacji z "+command.getUrl());
+        while(clientToServer.isAlive()){
+
+        }
         closeResources();
-    }
-    private void skipUnimportantLines() throws IOException{
-        while(in_client.readLine() != null){}
+        Log.connectionLog("Zakończono połączenie z "+command.getUrl());
     }
     private void closeResources() throws IOException{
         if(client != null)

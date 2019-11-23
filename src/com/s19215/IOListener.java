@@ -9,10 +9,12 @@ public class IOListener implements Runnable {
 
     private InputStream in;
     private OutputStream out;
+    private String url;
 
-    public IOListener(InputStream in, OutputStream out){
+    public IOListener(InputStream in, OutputStream out, String url){
         this.in = in;
         this.out = out;
+        this.url = url;
     }
 
     @Override
@@ -29,10 +31,10 @@ public class IOListener implements Runnable {
                 }
             } while(dataLength>0);
         }catch (SocketTimeoutException e){
-            System.out.println("Socket został zamkniety.");
+            //nic nie warto robić
         }
         catch (IOException e){
-            System.out.println("Wystąpił błąd podczas przesyłu danych:\n\t\t"+e.getMessage());
+            Log.errorLog("Wystąpił błąd podczas przesyłu danych z "+url+":"+e.getMessage());
         }
     }
 }

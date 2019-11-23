@@ -2,15 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="508dceb5-7683-4915-8f27-0308c5c16741" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/s19215/HTTPCommandParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/s19215/HttpMessages.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/s19215/IOListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/s19215/LogFiles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/connection.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/error.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/s19215/Log.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proxy_server/com/s19215/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Proxy_server/com/s19215/ProxyConnector.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/skj/com/s19215/LogFiles.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/skj/com/s19215/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/skj/com/s19215/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/skj/com/s19215/ProxyConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/skj/com/s19215/ProxyConnector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/s19215/IOListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/s19215/IOListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/s19215/LogFiles.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/s19215/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/s19215/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/s19215/ProxyConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/s19215/ProxyConnector.java" afterDir="false" />
     </list>
@@ -33,6 +34,10 @@
   <component name="ProjectId" id="1TqM6p5Gz7qjVXKG7bPIXzpRl1b" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -91,5 +96,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
