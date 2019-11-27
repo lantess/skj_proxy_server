@@ -17,8 +17,6 @@ public class Main {
             new Main(2137);
         }
         catch(IOException e){
-            //System.out.println("Problem z nawiązaniem połączenia");
-            //e.printStackTrace();
             Log.errorLog("Nie udało się otworzyć portu. Serwer nie został uruchomiony.");
         }
     }

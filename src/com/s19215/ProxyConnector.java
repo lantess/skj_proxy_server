@@ -24,21 +24,20 @@ public class ProxyConnector extends Thread{
     @Override
     public void run(){
         HTTPCommandParser command = null;
-        try{
+        try {
             String inputLine = in_client.readLine();
             command = new HTTPCommandParser(inputLine);
-            if(!command.isOk())
-                throw new IOException("Nieprawidłowa komenda.");
-            if(command.getCommand().equals("CONNECT"))
-                makeNewConnection(command);
-            else
-                Log.errorLog("Nierozpoznane połączenie.");
-
+            if (command.isOk()) {
+                if (command.getCommand().equals("CONNECT"))
+                    makeNewHTTPSConnection(command);
+                else
+                    makeNewHTTPConnection(command);
+            }
         } catch (IOException e) {
-            Log.errorLog("Wystąpił problem podczas komunikacji z <"+command.getUrl()+">:\t"+e.getMessage());
+            Log.errorLog("Wystąpił problem podczas komunikacji.");
         }
     }
-    private void makeNewConnection(HTTPCommandParser command) throws IOException{
+    private void makeNewHTTPSConnection(HTTPCommandParser command) throws IOException{
         Log.connectionLog("Nawiązano połączenie z "+command.getUrl()+" przez "+client.getInetAddress().getHostAddress());
         server = new Socket(command.getUrl(),
                                     command.getPort());
@@ -57,6 +56,26 @@ public class ProxyConnector extends Thread{
         while(clientToServer.isAlive()){
 
         }
+        closeResources();
+        Log.connectionLog("Zakończono połączenie z "+command.getUrl()+" rozpoczęte przez "+client.getInetAddress().getHostAddress());
+    }
+    private void makeNewHTTPConnection(HTTPCommandParser command) throws IOException{
+        Log.connectionLog("Nawiązano połączenie z "+command.getUrl()+" przez "+client.getInetAddress().getHostAddress());
+        server = new Socket(command.getUrl(),
+                command.getPort());
+        server.setSoTimeout(socketTimeout);
+        PrintWriter output = new PrintWriter(server.getOutputStream());
+        output.write(HttpMessages.gethttpConection(command.getCommand(),
+                                                    command.getFile(),
+                                                    command.getUrl()));
+        output.flush();
+        new IOListener(server.getInputStream(),
+                client.getOutputStream(),
+                command.getUrl())
+                .run();
+        out_client.flush();
+        out_client.write(HttpMessages.ok);
+        out_client.flush();
         closeResources();
         Log.connectionLog("Zakończono połączenie z "+command.getUrl()+" rozpoczęte przez "+client.getInetAddress().getHostAddress());
     }

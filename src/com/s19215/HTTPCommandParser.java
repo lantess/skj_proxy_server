@@ -3,16 +3,28 @@ package com.s19215;
 public class HTTPCommandParser {
     private String command,
                     url,
-                    port;
+                    port,
+                    file;
     private boolean ok;
     public HTTPCommandParser(String s){
+        if(s==null){
+            ok = false;
+            return;
+        }
         String[] splittedLine = s.split(" ");
         try{
             command = splittedLine[0];
-            url = splittedLine[1].substring(0,
-                                            splittedLine[1].indexOf(":"));
-            port = splittedLine[1].substring(splittedLine[1].indexOf(":")+1);
-             ok = true;
+            if(command.equals("CONNECT")){
+                url = splittedLine[1].substring(0,splittedLine[1].indexOf(":"));
+                port = splittedLine[1].substring(splittedLine[1].indexOf(":")+1);
+                file = "";
+            }else{
+                url = splittedLine[1].substring(splittedLine[1].indexOf("//")+2);
+                port = "80";
+                file = url.substring(url.indexOf("/"));
+                url = url.substring(0, url.indexOf("/"));
+            }
+            ok = true;
         } catch(Exception e){
              ok = false;
         }
@@ -26,6 +38,7 @@ public class HTTPCommandParser {
     public Integer getPort(){
         return Integer.parseInt(port);
     }
+    public String getFile(){ return file;}
     public boolean isOk(){
         return ok;
     }
