@@ -20,7 +20,11 @@ public class HTTPCommandParser {
                 file = "";
             }else{
                 url = splittedLine[1].substring(splittedLine[1].indexOf("//")+2);
-                port = "80";
+                if(url.indexOf(":")!=-1){
+                    port = url.substring(url.indexOf(":"));
+                    port = port.substring(url.indexOf("/"));
+                }else
+                    port = "80";
                 file = url.substring(url.indexOf("/"));
                 url = url.substring(0, url.indexOf("/"));
             }

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="skj:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/skj_jar</output-path>
+    <root id="archive" name="skj.jar">
+      <element id="module-output" name="skj" />
+    </root>
+  </artifact>
+</component>

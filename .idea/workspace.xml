@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="skj:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="508dceb5-7683-4915-8f27-0308c5c16741" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/skj_jar.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/connection.log" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/error.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/skj/com/s19215/HTTPCommandParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/skj/com/s19215/HTTPCommandParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/skj/com/s19215/HttpMessages.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/skj/com/s19215/HttpMessages.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/skj/com/s19215/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/skj/com/s19215/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/skj/com/s19215/ProxyConnector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/skj/com/s19215/ProxyConnector.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/s19215/HTTPCommandParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/s19215/HTTPCommandParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/s19215/HttpMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/s19215/HttpMessages.java" afterDir="false" />
@@ -35,6 +45,9 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -59,6 +72,7 @@
         </pattern>
       </extension>
       <method v="2">
+        <option name="BuildArtifacts" enabled="true" />
         <option name="Make" enabled="true" />
       </method>
     </configuration>

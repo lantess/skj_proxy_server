@@ -65,7 +65,7 @@ public class ProxyConnector extends Thread{
                 command.getPort());
         server.setSoTimeout(socketTimeout);
         PrintWriter output = new PrintWriter(server.getOutputStream());
-        output.write(HttpMessages.gethttpConection(command.getCommand(),
+        output.write(HttpMessages.getHTTPConnection(command.getCommand(),
                                                     command.getFile(),
                                                     command.getUrl()));
         output.flush();
@@ -76,6 +76,7 @@ public class ProxyConnector extends Thread{
         out_client.flush();
         out_client.write(HttpMessages.ok);
         out_client.flush();
+        output.close();
         closeResources();
         Log.connectionLog("Zakończono połączenie z "+command.getUrl()+" rozpoczęte przez "+client.getInetAddress().getHostAddress());
     }
